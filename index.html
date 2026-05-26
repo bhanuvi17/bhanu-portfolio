@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+        name="description"
+        content="M.Tech Data Science student at SRMIST building projects across machine learning, deep learning, forecasting, RAG systems and applied AI."
+    />
+
+    <meta
+        name="keywords"
+        content="Bhanuprakash, Data Science, Machine Learning, Deep Learning, Python, FastAPI, RAG, LLMs, Portfolio"
+    />
+
+    <meta
+        property="og:title"
+        content="Bhanuprakash | Data Science Portfolio"
+    />
+
+    <meta
+        property="og:description"
+        content="Projects in computer vision, forecasting, RAG systems and applied AI."
+    />
+
+    <meta
+        property="og:image"
+        content="./images/profile.png"
+    />
+
+    <meta property="og:type" content="website" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="./script.js" defer></script>
+
+    <title>Bhanuprakash | Portfolio</title>
+</head>
+
+		<style>
+			/* ---- Typewriter ---- */
+			.typewriter-text {
+				color: var(--accent-clr);
+				font-weight: 600;
+			}
+			.typewriter-cursor {
+				color: var(--accent-clr);
+				animation: blink 0.75s step-end infinite;
+				font-weight: 300;
+			}
+			@keyframes blink {
+				0%, 100% { opacity: 1; }
+				50% { opacity: 0; }
+			}
+
+			/* ---- Stats row ---- */
+			.hero-stats {
+				display: flex;
+				align-items: center;
+				gap: 2.5rem;
+				margin-block-start: 3rem;
+				flex-wrap: wrap;
+			}
+			.hero-stat {
+				display: flex;
+				flex-direction: column;
+				gap: 0.3rem;
+			}
+			.stat-num {
+				font-size: clamp(2rem, 2.5vw, 2.8rem);
+				font-weight: 900;
+				color: var(--accent-clr);
+				line-height: 1;
+			}
+			.stat-label {
+				font-size: 1.2rem;
+				color: var(--other-clr);
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+			.hero-stat-divider {
+				width: 1px;
+				height: 3.5rem;
+				background: hsl(0, 0%, 25%);
+			}
+
+			/* ---- Two buttons side by side ---- */
+			.hero-btn-container {
+				display: flex;
+				align-items: center;
+				gap: 2rem;
+				flex-wrap: wrap;
+			}
+
+			.experience-section {
+				margin-block-start: var(--section-mt);
+				padding: 4rem 1rem;
+			}
+			.experience-list {
+				padding-block-start: 5rem;
+				display: flex;
+				flex-direction: column;
+				gap: 3rem;
+			}
+			.experience-item {
+				display: grid;
+				grid-template-columns: 1fr 2fr;
+				gap: 3rem;
+				padding: 2.5rem 3rem;
+				border: 1px solid hsl(0, 0%, 15%);
+				border-radius: 8px;
+				background-color: hsl(0, 0%, 7%);
+				transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+			.experience-item::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 3px;
+				background: var(--accent-clr);
+				transform: scaleY(0);
+				transform-origin: top;
+				transition: transform 0.3s ease;
+			}
+			.experience-item:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+				border-color: hsl(0, 0%, 25%);
+			}
+			.experience-item:hover::before {
+				transform: scaleY(1);
+			}
+			.exp-meta {
+				display: flex;
+				flex-direction: column;
+				gap: 0.6rem;
+			}
+			.exp-company {
+				font-size: clamp(1.6rem, 2vw, 2rem);
+				font-weight: 900;
+				color: var(--main-clr);
+				line-height: 1.2;
+			}
+			.exp-duration {
+				font-size: 1.3rem;
+				color: var(--accent-clr);
+				font-style: italic;
+			}
+			.exp-type {
+				font-size: 1.2rem;
+				color: var(--other-clr);
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+			.exp-content {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+			.exp-role {
+				font-size: clamp(1.5rem, 2vw, 1.9rem);
+				font-weight: 700;
+				color: var(--main-clr);
+			}
+			.exp-points {
+				display: flex;
+				flex-direction: column;
+				gap: 0.75rem;
+				padding-inline-start: 0;
+			}
+			.exp-points li {
+				list-style: none;
+				font-size: clamp(1.3rem, 1vw, 1.45rem);
+				color: var(--other-clr);
+				line-height: 1.7;
+				padding-inline-start: 1.5rem;
+				position: relative;
+			}
+			.exp-points li::before {
+				content: '▹';
+				position: absolute;
+				left: 0;
+				color: var(--accent-clr);
+			}
+			.exp-stack {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+				padding-block-start: 0.5rem;
+			}
+			.exp-stack span {
+				padding: 0.2rem 0.7rem;
+				background: var(--tag-clr);
+				border-radius: 2px;
+				color: var(--primary-clr);
+				font-size: clamp(1.1rem, 1vw, 1.25rem);
+			}
+			@media screen and (max-width: 50em) {
+				.experience-item {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<a class="skip-to-content" href="#main-content">Skip to content</a>
+
+		<header class="main-header">
+			<nav class="nav slide-in-top">
+				<div class="container">
+					<a href="#">
+						<img src=".\images\Screenshot 2025-02-01 184338.png" alt="bhanu" class="logo" />
+						<title>Logo</title>
+					</a>
+
+					<ul class="nav-list">
+						<li><a href="#about" class="nav-links hover-effect">About</a></li>
+						<li><a href="#projects" class="nav-links hover-effect">Projects</a></li>
+						<li><a href="#experience" class="nav-links hover-effect">Experience</a></li>
+						<li><a href="#skills" class="nav-links hover-effect">Skills</a></li>
+						<li><a href="#education" class="nav-links hover-effect">Education</a></li>
+						<li><a href="#contact" class="nav-links hover-effect">Contact</a></li>
+					</ul>
+
+					<ul class="social-nav">
+						<li>
+							<a href="https://www.linkedin.com/in/bhanuvi17/" rel="noreferrer" target="_blank" aria-label="link to linkedin profile">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="fill: currentColor">
+									<circle cx="4.983" cy="5.009" r="2.188"></circle>
+									<path d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"></path>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a href="https://github.com/bhanuvi17" rel="noreferrer" target="_blank" aria-label="link to github account">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="fill: currentColor">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"></path>
+								</svg>
+							</a>
+						</li>
+					</ul>
+
+					<div class="hamburger">
+						<div class="line-menu half start"></div>
+						<div class="line-menu"></div>
+						<div class="line-menu half end"></div>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<main id="main-content">
+
+			<!-- hero section -->
+			<section class="hero">
+				<div class="container">
+					<article class="hero-text bounce-in-left">
+						<div>
+							<p class="subtitle">hi there 👋🏽, i'm</p>
+							<h1 class="name">Bhanu..</h1>
+						</div>
+						<div>
+							<p class="intro">
+								M.Tech Data Science @ SRMIST KTR
+								<br />
+								<span id="typewriter" class="typewriter-text"></span><span class="typewriter-cursor">|</span>
+							</p>
+
+							<!-- stats row -->
+
+							<div class="hero-btn-container">
+								<a href="#projects" class="btn hire-btn">View My Work →</a>
+								<a href="mailto:bhanuprakash1722004@gmail.com" class="btn download-link">Get In Touch</a>
+							</div>
+						</div>
+					</article>
+					<img src=".\images\coding-ground.png" alt="coding desk" class="fade-in code" />
+				</div>
+			</section>
+
+			<!-- about section -->
+				<section class="about-me" id="about">
+					<div class="container" data-aos="fade-up">
+						<img src="./images/profile.png" />
+
+						<article>
+							<p class="subtitle">Who is Bhanuprakash?</p>
+							<h2 class="title">How I Got Here</h2>
+
+							<div class="about">
+
+								<p>
+								I began my journey in Computer Science Engineering in 2022, building a foundation in core CS concepts before moving toward Python, mathematics and data analysis.
+								</p>
+
+								<p>
+								My understanding of machine learning and deep learning grew through Andrew Ng’s ML and DL Specializations, where I spent time implementing algorithms from scratch rather than relying only on libraries. That helped me build intuition behind how models work.
+								</p>
+
+								<p>
+								During M.Tech in Data Science at SRMIST, my focus expanded toward computer vision, LLMs, RAG systems, vector databases and deployment workflows. More recently, I’ve explored AI orchestration, model routing and LLM integration through projects and internship experience.
+								</p>
+
+								<p>
+									<a href="https://drive.google.com/file/d/1X6GnB-fupJ5OdjRT2ofnDYI0CkO4M-bk/view?usp=drive_link"
+									class="btn download-resume"
+									target="_blank">
+									Download Resume
+									</a>
+								</p>
+
+							</div>
+						</article>
+					</div>
+				</section>
+
+			<!-- projects section -->
+			<section class="projects-section" id="projects">
+				<div class="container">
+					<article data-aos="fade-up">
+						<p class="subtitle">My projects</p>
+						<h2 class="title">Some Things I Built</h2>
+						<p class="info">
+							I like to stay busy and always have a project in the works. Take a look at some of the projects I've built:
+						</p>
+					</article>
+					<section class="projects projects-grid">
+
+						<!-- 01 Landfill -->
+						<article class="project-card" data-aos="fade-up">
+							<a href="https://www.kaggle.com/code/bhanuvi17/efficientnetb5-aerialwaste-v2" target="_blank" rel="noreferrer" class="project-card-img">
+								<img src="./images/landfill_image.png" alt="Landfill Detection Model Screenshot" />
+								<div class="project-card-overlay">View Project →</div>
+							</a>
+							<div class="project-card-body">
+								<span class="project-card-num">01</span>
+								<h2 class="project-card-title">Landfill Detection using EfficientNetB5</h2>
+								<p class="project-card-desc">
+									Built a landfill detection model on an 18.9GB aerial and satellite imagery dataset (11,703 images). Achieved 91.14% F1-score through transfer learning, progressive fine-tuning, class weighting, and test-time augmentation.
+								</p>
+								<ul class="tech-stack">
+									<li>Python</li>
+									<li>TensorFlow</li>
+									<li>EfficientNetB5</li>
+									<li>Transfer Learning</li>
+									<li>Computer Vision</li>
+								</ul>
+								<ul class="project-links">
+									<li><a href="https://www.kaggle.com/code/bhanuvi17/efficientnetb5-aerialwaste-v2" target="_blank" rel="noreferrer" class="hover-effect">Kaggle →</a></li>
+								</ul>
+							</div>
+						</article>
+
+						<!-- 02 ENSO -->
+						<article class="project-card" data-aos="fade-up" data-aos-delay="100">
+							<a href="https://bhanuvi17-enso-prediction-streamlit-app-pt20lw.streamlit.app/" target="_blank" rel="noreferrer" class="project-card-img">
+								<img src="./images/ENSO_image.png" alt="ENSO Events Prediction Model Screenshot" />
+								<div class="project-card-overlay">View Project →</div>
+							</a>
+							<div class="project-card-body">
+								<span class="project-card-num">02</span>
+								<h2 class="project-card-title">ENSO Events Prediction</h2>
+								<p class="project-card-desc">
+									Built a time series forecasting model to predict El Niño and La Niña events using historical climate data (1950–2025). Stacked LSTM networks on ONI data achieving R² of 0.88. Deployed as an interactive Streamlit dashboard.
+								</p>
+								<ul class="tech-stack">
+									<li>Python</li>
+									<li>TensorFlow</li>
+									<li>LSTM</li>
+									<li>Time Series</li>
+									<li>Scikit-learn</li>
+									<li>Streamlit</li>
+								</ul>
+								<ul class="project-links">
+									<li><a href="https://github.com/bhanuvi17/enso_prediction.git" target="_blank" rel="noreferrer" class="hover-effect">GitHub →</a></li>
+									<li><a href="https://bhanuvi17-enso-prediction-streamlit-app-pt20lw.streamlit.app/" target="_blank" rel="noreferrer" class="hover-effect">Live Demo →</a></li>
+								</ul>
+							</div>
+						</article>
+
+						<!-- 03 RAG -->
+						<article class="project-card" data-aos="fade-up">
+							<a href="https://github.com/bhanuvi17/cricket-laws-rag_system.git" target="_blank" rel="noreferrer" class="project-card-img">
+								<img src="./images/RAG_image.png" alt="Cricket Laws RAG System Screenshot" />
+								<div class="project-card-overlay">View Project →</div>
+							</a>
+							<div class="project-card-body">
+								<span class="project-card-num">03</span>
+								<h2 class="project-card-title">Cricket Laws RAG System</h2>
+								<p class="project-card-desc">
+									Built a RAG system for interactive Q&amp;A over cricket law documents using semantic search and LLM responses. Used all-MiniLM-L6-v2 with FAISS retrieval and TinyLlama-1.1B-Chat, deployed via FastAPI and Streamlit.
+								</p>
+								<ul class="tech-stack">
+									<li>Python</li>
+									<li>FastAPI</li>
+									<li>FAISS</li>
+									<li>TinyLlama</li>
+									<li>RAG</li>
+									<li>Streamlit</li>
+								</ul>
+								<ul class="project-links">
+									<li><a href="https://github.com/bhanuvi17/cricket-laws-rag_system.git" target="_blank" rel="noreferrer" class="hover-effect">GitHub →</a></li>
+								</ul>
+							</div>
+						</article>
+
+						<!-- 04 Dynamic Pricing -->
+						<article class="project-card" data-aos="fade-up" data-aos-delay="100">
+							<a href="https://github.com/bhanuvi17/Dynamic-Pricing-Engine.git" target="_blank" rel="noreferrer" class="project-card-img">
+								<img src="./images/Dynamic_image.png" alt="Dynamic Pricing Engine Screenshot" />
+								<div class="project-card-overlay">View Project →</div>
+							</a>
+							<div class="project-card-body">
+								<span class="project-card-num">04</span>
+								<h2 class="project-card-title">Dynamic Pricing Engine</h2>
+								<p class="project-card-desc">
+									Designed a two-stage dynamic pricing system combining XGBoost regression for base fare prediction with a demand–supply driven surge mechanism. Modular FastAPI backend evaluated via simulation under varying demand scenarios.
+								</p>
+								<ul class="tech-stack">
+									<li>Python</li>
+									<li>XGBoost</li>
+									<li>FastAPI</li>
+									<li>Feature Engineering</li>
+									<li>Scikit-learn</li>
+								</ul>
+								<ul class="project-links">
+									<li><a href="https://github.com/bhanuvi17/Dynamic-Pricing-Engine.git" target="_blank" rel="noreferrer" class="hover-effect">GitHub →</a></li>
+								</ul>
+							</div>
+						</article>
+
+					</section>
+				</div>
+			</section>
+
+			<!-- experience section -->
+			<section class="experience-section" id="experience" data-aos="fade-up">
+				<div class="container">
+					<article>
+						<p class="subtitle">My Experience</p>
+						<h2 class="title">Where I've Worked</h2>
+					</article>
+					<div class="experience-list">
+						<div class="experience-item">
+							<div class="exp-meta">
+								<span class="exp-company">SpazorLabs</span>
+								<span class="exp-duration">Dec 2025 – Feb 2026</span>
+								<span class="exp-type">Internship</span>
+							</div>
+							<div class="exp-content">
+								<h3 class="exp-role">AI/ML Developer Intern</h3>
+								<ul class="exp-points">
+									<li>Built a prototype AI orchestration service using Python and FastAPI to manage workflows across multiple LLM providers.</li>
+									<li>Explored AI orchestration architectures, model routing strategies, and multi-provider LLM integration through research-driven experimentation.</li>
+									<li>Collaborated in early-stage product development, contributing to technical discussions and supporting outreach with startup stakeholders.</li>
+								</ul>
+								<div class="exp-stack">
+									<span>Python</span>
+									<span>FastAPI</span>
+									<span>LLMs</span>
+									<span>AI Orchestration</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- my skills -->
+			<section class="my-skills" id="skills" data-aos="fade-up">
+				<div class="container">
+					<article>
+						<p class="subtitle">My Skills</p>
+						<h2 class="title">Tech Stack</h2>
+						<p class="info">
+						Tools, frameworks and concepts I've used across projects.
+						</p>
+					</article>
+					<ul>
+						<li>Python, SQL</li>
+						<li>Machine Learning</li>
+						<li>Deep Learning</li>
+						<li>Generative AI / LLMs</li>
+						<li>RAG &amp; Vector Databases</li>
+						<li>TensorFlow, Keras</li>
+						<li>Scikit-learn</li>
+						<li>CNNs, LSTMs, Transfer Learning</li>
+						<li>NumPy, Pandas, PySpark</li>
+						<li>FastAPI, Streamlit</li>
+						<li>Git &amp; GitHub</li>
+						<li>DSA, OOP, DBMS</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- education section -->
+			<section class="my-education" id="education" data-aos="fade-up">
+				<div class="container">
+					<article>
+						<p class="subtitle">My Education</p>
+						<h2 class="title">Educational Qualifications</h2>
+						<p class="info">Below are the details of my academic background:</p>
+					</article>
+
+					<div class="education-item">
+						<div class="degree-info">
+							<h3 class="degree-title">MTech Data Science</h3>
+							<p class="institution-name">SRM Institute of Science &amp; Technology, Chennai</p>
+						</div>
+						<div class="education-details">
+							<p class="dates">2025 – Present</p>
+							<p class="cgpa"><strong>CGPA:</strong> 9.17</p>
+							<div class="progress-bar">
+								<div class="progress" style="width: 92%;"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="education-item">
+						<div class="degree-info">
+							<h3 class="degree-title">BE in Computer Science Engineering</h3>
+							<p class="institution-name">Sambhram Institute of Technology, Bengaluru</p>
+						</div>
+						<div class="education-details">
+							<p class="dates">2021 – 2025</p>
+							<p class="cgpa"><strong>CGPA:</strong> 8.36</p>
+							<div class="progress-bar">
+								<div class="progress" style="width: 70%;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- contact section -->
+			<section class="contact" data-aos="fade-up">
+				<div class="container">
+					<p class="subtitle">Have a project? or just looking to hire?</p>
+					<h2 class="title">Let's Work Together</h2>
+					<p class="info">
+						Feel free to reach out if you're looking to hire, just want to connect or see if we can build something amazing together.
+					</p>
+					<div>
+						<a href="mailto:bhanuprakash1722004@gmail.com" class="mail-link hover-effect">
+							Get in touch →
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="footer" id="contact">
+			<div class="container">
+				<p>&copy; <span id="date"></span> Bhanuprakash</p>
+				<div>
+					<ul>
+						<li>
+							<a href="tel:+918971351314" rel="noreferrer" class="hover-effect">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="fill: rgb(232, 238, 235);">
+									<path d="M6.62 10.79a15.561 15.561 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.08-.24 11.554 11.554 0 0 0 3.63.58 1 1 0 0 1 1 1v3.55a1 1 0 0 1-1 1A19.92 19.92 0 0 1 2 4a1 1 0 0 1 1-1h3.55a1 1 0 0 1 1 1 11.554 11.554 0 0 0 .58 3.63 1 1 0 0 1-.24 1.08z"></path>
+								</svg>
+							</a>
+						</li>
+						<li><a href="https://github.com/bhanuvi17" rel="noreferrer" target="_blank" class="hover-effect">GitHub</a></li>
+						<li><a href="https://www.linkedin.com/in/bhanuvi17/" rel="noreferrer" target="_blank" class="hover-effect">LinkedIn</a></li>
+					</ul>
+					<a href="#top" class="top">
+						<p class="scroll">scroll <span>to top</span></p>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor">
+							<title>scroll to top</title>
+							<path d="m6.293 11.293 1.414 1.414L12 8.414l4.293 4.293 1.414-1.414L12 5.586z"></path>
+							<path d="m6.293 16.293 1.414 1.414L12 13.414l4.293 4.293 1.414-1.414L12 10.586z"></path>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</footer>
+		<div class="magic-cursor"></div>
+		<script>
+			const phrases = [
+				"Building systems through data and AI",
+				"Learning by building across domains",
+				"Exploring ML, backend and applied AI",
+				"Turning experiments into usable tools"
+			];
+			let phraseIndex = 0, charIndex = 0, deleting = false;
+			const el = document.getElementById('typewriter');
+			function type() {
+				const current = phrases[phraseIndex];
+				if (!deleting) {
+					el.textContent = current.slice(0, ++charIndex);
+					if (charIndex === current.length) {
+						deleting = true;
+						setTimeout(type, 1800);
+						return;
+					}
+				} else {
+					el.textContent = current.slice(0, --charIndex);
+					if (charIndex === 0) {
+						deleting = false;
+						phraseIndex = (phraseIndex + 1) % phrases.length;
+					}
+				}
+				setTimeout(type, deleting ? 40 : 70);
+			}
+			type();
+		</script>
+	</body>
+</html>
