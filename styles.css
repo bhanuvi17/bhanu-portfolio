@@ -1012,8 +1012,11 @@ small {
     display: block;
 	}
 
-	.hero .code {
-    display: none;
+	.hero img {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+
 	}
 
 	.my-skills ul {
