@@ -1006,8 +1006,13 @@ small {
 		position: relative;
 	}
 
+	
 	.hero img {
-		display: none;
+    display: block;
+	}
+
+	.hero .code {
+    display: none;
 	}
 
 	.my-skills ul {
