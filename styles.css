@@ -362,7 +362,8 @@ small {
 }
 
 .hero img {
-	max-width: 475px;
+	max-width: 100%;
+	width: 100%;
 }
 
 .hero .code {
@@ -423,6 +424,12 @@ small {
 
 .download-link:focus {
 	outline: none;
+}
+
+@media (max-width: 768px) {
+	.hero .code {
+		display: none;
+	}
 }
 
 /*******************
